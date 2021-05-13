@@ -4,12 +4,6 @@ import MapContext from "./MapContext";
 import * as ol from "ol";
 
 
-// interface IProps {
-// 	children: React.ReactNode;
-// 	zoom: any; 
-// 	center: any;
-// }
-
 const Map = ({ children, zoom, center }) => {
 	const mapRef = useRef();
 	const [map, setMap] = useState(null);
@@ -19,12 +13,7 @@ const Map = ({ children, zoom, center }) => {
 		let options = {
 			view: new ol.View({ zoom, center }),
 			layers: [],
-			controls: [
-				// new control.Zoom({
-				// 	zoomInId: "bplus",
-				// 	zoomOutId: "bminus"
-				// })
-			],
+			controls: [],
 			overlays: []
 		};
 
@@ -51,7 +40,6 @@ const Map = ({ children, zoom, center }) => {
 
 	return (
 		<MapContext.Provider value={{ map }}>
-			{/* <div ref={mapRef} className="ol-map" style={{height: '91vh', width: '85vw', margin: '0'}}> */}
 			<div ref={mapRef} className="ol-map" style={{height: '92vh', width: '100%', margin: '0'}}>
 				{children}
 			</div>

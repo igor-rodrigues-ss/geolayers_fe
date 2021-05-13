@@ -3,6 +3,8 @@ import { useDispatch } from 'react-redux';
 
 import axios from 'axios';
 import { useState } from 'react';
+import InputUpload from './InputUpload';
+import Button from 'react-bootstrap/Button';
 
 
 function asyncAction(formData: any) {
@@ -18,7 +20,6 @@ function asyncAction(formData: any) {
         )
     }
 }
-
 
 const LayerImportPage = () => {
     let distpach = useDispatch();
@@ -39,12 +40,18 @@ const LayerImportPage = () => {
     };
 
     return (
-        <div>
+        <div style={{background: '#f9f9f9', height: '100vh'}}>
             <TopBar />
-            <h1>Import</h1>
-            <input type="file" onChange={onFileChange}></input>
-            <p></p>
-            <button onClick={importLayer}>Enviar</button>
+            <div style={{textAlign: 'center', display: 'flex', justifyContent: 'space-around'}}>                
+                <div style={{margin: '5% 0 0 0', background: 'white', boxShadow: '5px 5px 10px lightgray', borderRadius: '5px', border: '1px solid lightgray', width: '500px',  padding: '32px', zIndex: 2000}}>
+                    <h2>Upload de Arquivos</h2>
+                    <h4 style={{color: 'gray'}}>(shapefile, geojson)</h4>
+                    <div style={{margin: '5%'}}></div>
+                    <InputUpload type="file" onChange={onFileChange} />
+                    <p></p>
+                    <Button variant="primary" onClick={importLayer}>Enviar Arquivo</Button>
+                </div>            
+            </div>
         </div>
     );
 }
