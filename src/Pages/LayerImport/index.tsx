@@ -7,7 +7,7 @@ import { useState } from 'react';
 
 function asyncAction(formData: any) {
     return (dispatch: any) => {
-        axios.post('http://localhost:8000/import', formData).then(
+        axios.post('http://localhost:8000/layer/upload', formData).then(
             (data: any) => {
                 dispatch({type: 'IMPORT_SUCCESS', data: data})
             }
