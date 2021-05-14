@@ -3,27 +3,26 @@ import axios from 'axios';
 
 import { useDispatch } from 'react-redux';
 import LayerItem from './LayerItem';
-import styled from 'styled-components';
-
-
-const Div = styled.div`
-  width: 400px;
-  background: #343a40;
-  padding: 8px;
-`
+import { setAllLayers } from '../actions';
+import { Div } from './styled';
+import { ILayers } from '../interfaces';
+// import AlertError from 'material-ui/svg-icons/alert/error';
 
 const URL = 'http://localhost:8000/layer'
 
-const SideBar = () => {
+
+const SideBar = (): JSX.Element => {
     
-    let [layers, setLayers] = useState<any>({});
+    let [layers, setLayers] = useState<ILayers>({} as ILayers);
     let dispatch = useDispatch()
 
     useEffect(() => {
-        axios.get(URL).then(
-            (data: any) => {
-                setLayers(data['data'])
-                dispatch({type: 'ALL_LAYER', data: data['data']})
+        axios.get<ILayers>(URL).then(
+            (response) => {
+                setLayers(response.data)
+                dispatch(
+                    setAllLayers(response.data)
+                )
             }
         ).catch(
             (err) => {
@@ -37,8 +36,12 @@ const SideBar = () => {
         <Div>
             {
               	Object.keys(layers).map(
-                	(id: any, index: any) => <LayerItem
-						nome={layers[id].nome} id={id} show={layers[id].show}
+                	(id: string, index: number) => <LayerItem
+                        id={id}
+                        nome={layers[id].nome}
+                        show={layers[id].show}
+                        color={layers[id].color}
+                        fill={layers[id].fill}
 					/>
               	)
             }

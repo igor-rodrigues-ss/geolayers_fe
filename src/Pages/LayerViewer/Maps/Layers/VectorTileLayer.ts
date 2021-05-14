@@ -3,14 +3,15 @@ import MapContext from "../Map/MapContext";
 import VectorTileLayer from 'ol/layer/VectorTile.js';
 import VectorTileSource from 'ol/source/VectorTile.js';
 import MVT from 'ol/format/MVT.js';
-import { Circle as CircleStyle, Fill, Stroke, Style } from 'ol/style';
+import {Fill, Stroke, Style } from 'ol/style';
 
 
 interface IProps {
 	id: string;
 	show: boolean;
 	zIndex: number;
-
+	color: string;
+	fill: boolean;
 }
 
 const VTLayer: React.FC<IProps> = (props: IProps) => {
@@ -18,11 +19,19 @@ const VTLayer: React.FC<IProps> = (props: IProps) => {
 	const { map } = useContext(MapContext);
 	let url = `http://localhost:8000/layer/${props.id}/mvt/{z}/{x}/{y}.pbf`;
 
+	let fill;
+
+	if (props.fill){
+		fill = new Fill({
+			color: props.color, 
+		})
+	}
+
 	let style = new Style({
 		stroke: new Stroke({
-		  color: 'red',
-		  width: 1
-		})
+		  color: props.color, width: 1
+		}),
+		fill: fill
 	});
 
 	let source = new VectorTileSource({

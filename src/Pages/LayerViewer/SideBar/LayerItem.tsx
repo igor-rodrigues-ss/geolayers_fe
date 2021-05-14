@@ -4,12 +4,16 @@ import PublicIcon from '@material-ui/icons/Public';
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
+import { changeLayerVisibility } from '../actions';
 
 
 interface IPropsLbl {
-    nome: string;
+    nome?: string | null;
     show: boolean;
     id: string;
+
+    color: string;
+    fill: boolean;
 }
 
 const Div = styled.div`
@@ -21,15 +25,23 @@ const Div = styled.div`
     justify-content: space-between;
 `
 
-const LayerItem: React.FC<IPropsLbl> = (props: IPropsLbl) => {
+const LayerItem: React.FC<IPropsLbl> = (props: IPropsLbl): JSX.Element => {
     let dispatch = useDispatch()
 
-    useEffect(() => {
-      dispatch({type: 'ALL_LAYER', data: {id: props.id, show: false}})
-    }, [])
+	useEffect(() => {
+		dispatch(
+			changeLayerVisibility(
+                {id: props.id, show: false, color: props.color, fill: props.fill} // TODO: customizar este objeto para enviar somente o id e SHOW
+            )
+		)
+	}, [])
     
-    function onChangeChecked(e: any){
-      dispatch({type: 'ALL_LAYER', data: {id: props.id, show: e.target.checked}})
+    const onChangeChecked = (e:  React.ChangeEvent<HTMLInputElement>): void => {
+		dispatch(
+			changeLayerVisibility(
+                {id: props.id, show: e.target.checked, color: props.color, fill: props.fill} // TODO: customizar este objeto para enviar somente o id e SHOW
+            )
+		)
     }
   
     return (

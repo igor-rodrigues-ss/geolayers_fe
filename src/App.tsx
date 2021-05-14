@@ -1,6 +1,5 @@
-import React from 'react';
 import LayerViewerPage from './Pages/LayerViewer';
-import LayerImportPage from './Pages/LayerImport';
+import LayerUploadPage from './Pages/LayerUpload';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
@@ -12,7 +11,7 @@ function App() {
       <BrowserRouter>
           <Switch>
               <Route path="/" exact={true} component={LayerViewerPage} />
-              <Route path="/import" component={LayerImportPage} />
+              <Route path="/upload" component={LayerUploadPage} />
           </Switch>
       </BrowserRouter>
     </Provider>

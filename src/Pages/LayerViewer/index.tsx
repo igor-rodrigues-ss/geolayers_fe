@@ -4,7 +4,7 @@ import SideBar from './SideBar';
 import MapWithLayers from './Maps/Map';
 
 
-const LayerViewerPage: React.FC = () => {
+const LayerViewerPage: React.FC = (): JSX.Element => {
   return (
     <>
       <TopBar />
