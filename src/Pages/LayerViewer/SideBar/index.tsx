@@ -6,7 +6,7 @@ import LayerItem from './LayerItem';
 import { setAllLayers } from '../actions';
 import { Div } from './styled';
 import { ILayers } from '../interfaces';
-// import AlertError from 'material-ui/svg-icons/alert/error';
+
 
 const URL = 'http://localhost:8000/layer'
 
@@ -26,8 +26,7 @@ const SideBar = (): JSX.Element => {
             }
         ).catch(
             (err) => {
-                alert(JSON.stringify(err))
-                alert('ERRO busca')
+                alert(JSON.stringify(err.response.data.detail.msg))
             }
         )
       }, []);
