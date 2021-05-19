@@ -7,7 +7,7 @@ const INITIAL_STATE = {}
 function uploadFile(state = INITIAL_STATE, action: any) {
     switch (action.type) {
         case UPLOAD_FILE_SUCCESS:
-            alert('Camada inserida com sucesso!')
+            alert('Camada inserida na file de upload!')
             return {...state};
 
         case UPLOAD_FILE_ERROR:

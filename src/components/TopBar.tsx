@@ -15,6 +15,10 @@ const TopBar = (): JSX.Element => {
                 <Nav.Link>
                     <Link to="/upload">Nova Camada</Link>
                 </Nav.Link>
+
+                <Nav.Link>
+                    <Link to="/tarefas">Fila</Link>
+                </Nav.Link>
             </Nav>
         </Navbar>
     );
