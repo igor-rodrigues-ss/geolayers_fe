@@ -6,9 +6,7 @@ import LayerItem from './LayerItem';
 import { setAllLayers } from '../actions';
 import { Div } from './styled';
 import { ILayers } from '../interfaces';
-
-
-const URL = 'http://localhost:8000/layer'
+import { URL_LAYER } from '../../../urls';
 
 
 const SideBar = (): JSX.Element => {
@@ -17,7 +15,7 @@ const SideBar = (): JSX.Element => {
     let dispatch = useDispatch()
 
     useEffect(() => {
-        axios.get<ILayers>(URL).then(
+        axios.get<ILayers>(URL_LAYER).then(
             (response) => {
                 setLayers(response.data)
                 dispatch(

@@ -4,6 +4,7 @@ import VectorTileLayer from 'ol/layer/VectorTile.js';
 import VectorTileSource from 'ol/source/VectorTile.js';
 import MVT from 'ol/format/MVT.js';
 import {Fill, Stroke, Style } from 'ol/style';
+import { urlMVT } from '../../../../urls';
 
 
 interface IProps {
@@ -14,10 +15,11 @@ interface IProps {
 	fill: boolean;
 }
 
+
 const VTLayer: React.FC<IProps> = (props: IProps) => {
 	
 	const { map } = useContext(MapContext);
-	let url = `http://localhost:8000/layer/${props.id}/mvt/{z}/{x}/{y}.pbf`;
+	let url = urlMVT(props.id)
 
 	let fill;
 

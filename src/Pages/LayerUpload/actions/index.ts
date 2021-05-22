@@ -1,16 +1,16 @@
 import axios from 'axios';
 import { Dispatch } from 'redux';
 
+import { URL_LAYER_UPLOAD } from '../../../urls';
+
 
 const UPLOAD_FILE_SUCCESS = 'UPLOAD_FILE_SUCCESS';
 const UPLOAD_FILE_ERROR = 'UPLOAD_FILE_ERROR';
 
-const URL = 'http://localhost:8000/layer/upload';
-
 
 function uploadFileAction(formData: FormData) {
     return (dispatch: Dispatch) => {
-        axios.post(URL, formData).then(
+        axios.post(URL_LAYER_UPLOAD, formData).then(
             (data: any) => {
                 dispatch({type: UPLOAD_FILE_SUCCESS, data: data})
             }

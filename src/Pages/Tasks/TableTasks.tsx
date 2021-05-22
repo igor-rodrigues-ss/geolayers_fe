@@ -2,6 +2,7 @@ import * as React  from 'react';
 import {useState, useEffect} from 'react';
 import Table from 'react-bootstrap/Table';
 import axios from 'axios';
+import { URL_TASKS } from '../../urls';
 
 
 interface ITask {
@@ -16,7 +17,7 @@ const TableTasks: React.FC = () => {
     let [tasks, setTasks] = useState<ITask []>([])
 
     useEffect(() => {
-        axios.get('http://localhost:8000/tasks').then(
+        axios.get(URL_TASKS).then(
             (resp) => {
                 setTasks(resp.data)
             }

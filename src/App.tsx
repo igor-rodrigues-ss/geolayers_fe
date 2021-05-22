@@ -18,8 +18,6 @@ function App() {
           </Switch>
       </BrowserRouter>
     </Provider>
-
-  
   );
 }
 
