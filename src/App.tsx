@@ -1,5 +1,7 @@
 import LayerViewerPage from './Pages/LayerViewer';
 import LayerUploadPage from './Pages/LayerUpload';
+import FileModelsPage from './Pages/FileModels';
+
 import TasksPages from './Pages/Tasks';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -15,6 +17,8 @@ function App() {
               <Route path="/" exact={true} component={LayerViewerPage} />
               <Route path="/upload" component={LayerUploadPage} />
               <Route path="/tarefas" component={TasksPages} />
+              <Route path="/arquivos-modelo" component={FileModelsPage} />
+              
           </Switch>
       </BrowserRouter>
     </Provider>
