@@ -9,6 +9,7 @@ interface ITask {
     id: string;
     layer_name: string;
     status: string;
+    detail: string;
 }
 
 
@@ -36,6 +37,7 @@ const TableTasks: React.FC = () => {
                         <th>ID</th>
                         <th>Nome da Camada</th>
                         <th>Status</th>
+                        <th>Detalhes</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -46,6 +48,7 @@ const TableTasks: React.FC = () => {
                                     <td>{task.id}</td>
                                     <td>{task.layer_name}</td>
                                     <td>{task.status}</td>
+                                    <td>{task.detail}</td>
                                 </tr>
                             )
                         )
