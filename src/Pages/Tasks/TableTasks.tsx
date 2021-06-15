@@ -3,6 +3,7 @@ import {useState, useEffect} from 'react';
 import Table from 'react-bootstrap/Table';
 import axios from 'axios';
 import { URL_TASKS } from '../../urls';
+import { handleAPIError } from '../../utils';
 
 
 interface ITask {
@@ -24,7 +25,10 @@ const TableTasks: React.FC = () => {
             }
         ).catch(
             (err) => {
-                alert('Error')
+                handleAPIError(
+                    err, () => { alert('Error') }
+                )
+                
             }
         )
     }, [])

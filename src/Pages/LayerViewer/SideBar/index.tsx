@@ -7,6 +7,7 @@ import { setAllLayers } from '../actions';
 import { Div } from './styled';
 import { ILayers } from '../interfaces';
 import { URL_LAYER } from '../../../urls';
+import { handleAPIError } from '../../../utils';
 
 
 const SideBar = (): JSX.Element => {
@@ -24,7 +25,11 @@ const SideBar = (): JSX.Element => {
             }
         ).catch(
             (err) => {
-                alert(JSON.stringify(err.response.data.detail.msg))
+                handleAPIError(
+                    err, () => {
+                        alert(JSON.stringify(err.response.data.detail.msg))
+                    }
+                )
             }
         )
       }, []);

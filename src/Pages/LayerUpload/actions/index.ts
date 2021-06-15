@@ -2,7 +2,7 @@ import axios from 'axios';
 import { Dispatch } from 'redux';
 
 import { URL_LAYER_UPLOAD } from '../../../urls';
-
+import { handleAPIError } from '../../../utils';
 
 const UPLOAD_FILE_SUCCESS = 'UPLOAD_FILE_SUCCESS';
 const UPLOAD_FILE_ERROR = 'UPLOAD_FILE_ERROR';
@@ -16,7 +16,12 @@ function uploadFileAction(formData: FormData) {
             }
         ).catch(
             (err) => {
-                dispatch({type: UPLOAD_FILE_ERROR, data: err})
+                handleAPIError(
+                    err, () => {
+                        dispatch({type: UPLOAD_FILE_ERROR, data: err})
+                    }
+                )
+                
             }
         )
     }
